@@ -15,14 +15,13 @@ public class DbConnection {
 	public static Connection getConnection() {
 		String uri = String.format("jdbc:mysql://%s:%d/%s?user=%s&password=%s&useSSL=false", HOST, PORT, SCHEMA, USER,
 				PASSWORD);
-		System.out.println("Connecting to schema \"" + SCHEMA + "\" with the uri " + uri);
 
 		try {
 			Connection conn = DriverManager.getConnection(uri);
-			System.out.println("Successful connection!");
+			System.out.println("\nSuccessful connection to schema " + SCHEMA + "!");
 			return conn;
 		} catch (SQLException e) {
-			System.out.println("Error getting connection.");
+			System.out.println("\nError getting connection.");
 			throw new DbException(e);
 		}
 	}
